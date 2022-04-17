@@ -1,0 +1,5 @@
+.idea
+cmake-build-debug
+.venv
+results_*.json
+raytracing.jpg
