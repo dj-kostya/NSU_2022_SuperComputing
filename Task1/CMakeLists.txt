@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD 11)
 message(STATUS ${zmq_location})
 
 add_library(zmq STATIC IMPORTED)
-add_executable(Task1 minirt_test.cpp)
+add_executable(Task1 minirt_test_openmp.cpp)
 TARGET_LINK_LIBRARIES(Task1 PUBLIC minirt)
 
 
