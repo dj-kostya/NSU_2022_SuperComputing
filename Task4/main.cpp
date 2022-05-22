@@ -52,7 +52,6 @@ int main(int argc, char **argv) {
     int num_threads = (argc > 1 ? std::stoi(argv[1]) : 1);
     int viewPlaneResolutionX = 2048;
     int viewPlaneResolutionY = 1152;
-    int numOfSamples = 5;
 
     Scene scene;
     initScene(scene);
