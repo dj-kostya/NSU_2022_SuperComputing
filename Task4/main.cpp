@@ -49,16 +49,14 @@ void initScene(Scene &scene) {
 
 
 int main(int argc, char **argv) {
-    int viewPlaneResolutionX = (argc > 1 ? std::stoi(argv[1]) : 2560);
-    int viewPlaneResolutionY = (argc > 2 ? std::stoi(argv[2]) : 1440);
-    std::string sceneFile = (argc > 4 ? argv[4] : "");
+    int num_threads = (argc > 1 ? std::stoi(argv[1]) : 1);
+    int viewPlaneResolutionX = 2048;
+    int viewPlaneResolutionY = 1152;
+    int numOfSamples = 5;
 
     Scene scene;
-    if (sceneFile.empty()) {
-        initScene(scene);
-    } else {
-        scene.loadFromFile(sceneFile);
-    }
+    initScene(scene);
+
 
     const double backgroundSizeX = 4;
     const double backgroundSizeY = 4;
@@ -75,7 +73,7 @@ int main(int argc, char **argv) {
 
 
 
-    ThreadPool pool(8);
+    ThreadPool pool(num_threads);
     for (int x = 0; x < viewPlaneResolutionX; x++) {
         for (int y = 0; y < viewPlaneResolutionY; y++) {
             Point cur = Point(x, y);
@@ -87,9 +85,9 @@ int main(int argc, char **argv) {
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> executionTime = end - start;
-    std::cout << "Time " << executionTime.count() << std::endl;
+    std::cout << "Time = " << executionTime.count() << std::endl;
 
-    image.saveJPEG("raytracing.jpg");
+//    image.saveJPEG("raytracing.jpg");
 
     return 0;
 }
