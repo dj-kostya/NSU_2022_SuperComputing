@@ -25,8 +25,9 @@ private:
     Image &image;
     ViewPlane &viewPlane;
     Point cur_point;
+    size_t numOfSamples;
 public:
-    RetraceJob(Scene &scene, Image &image, ViewPlane &viewPlane, Point &curPoint);
+    RetraceJob(Scene &scene, Image &image, ViewPlane &viewPlane, Point &curPoint, size_t numOfSamples);
 
     void Execute() override;
 

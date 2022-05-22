@@ -4,7 +4,7 @@ import json
 command = '/home/konstantin/projects/NSU_2022_SuperComputing/Task4/cmake-build-debug/Task1 {num_threads}'
 
 test_type = 'threads'
-resolution = '2048x1152'
+resolution = '1920x1080x10'
 results = dict()
 if test_type != 'no_omp':
     for i in [1, 2, 4, 8, 16]:

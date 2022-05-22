@@ -50,9 +50,9 @@ void initScene(Scene &scene) {
 
 int main(int argc, char **argv) {
     int num_threads = (argc > 1 ? std::stoi(argv[1]) : 1);
-    int viewPlaneResolutionX = 2048;
-    int viewPlaneResolutionY = 1152;
-
+    int viewPlaneResolutionX = 1920;
+    int viewPlaneResolutionY = 1080;
+    int numOfSamples = 10;
     Scene scene;
     initScene(scene);
 
@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
     for (int x = 0; x < viewPlaneResolutionX; x++) {
         for (int y = 0; y < viewPlaneResolutionY; y++) {
             Point cur = Point(x, y);
-            pool.AddJob(std::make_unique<RetraceJob>(scene, image, viewPlane, cur));
+            pool.AddJob(std::make_unique<RetraceJob>(scene, image, viewPlane, cur, numOfSamples));
         }
     }
     auto start = std::chrono::high_resolution_clock::now();
@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
     std::chrono::duration<double> executionTime = end - start;
     std::cout << "Time = " << executionTime.count() << std::endl;
 
-//    image.saveJPEG("raytracing.jpg");
+    image.saveJPEG("raytracing.jpg");
 
     return 0;
 }
