@@ -99,7 +99,7 @@ void set_params(int N) {
     for (procRank = 0; procRank < cntOfProcesses; ++procRank) {
         if (procRank < N % cntOfProcesses) {
             sended_size[procRank] = (N / cntOfProcesses + 1) * N;
-} else {
+        } else {
             sended_size[procRank] = (N / cntOfProcesses) * N;
         }
         started_positions[procRank] = offsetIdx;
